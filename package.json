@@ -1,0 +1,34 @@
+{
+    "name": "OctoFellatio",
+    "version": "0.0.1",
+    "description": "Uh a git thingy mabobber",
+    "main": "src/app.coffee",
+    "dependencies": {
+        "express": "*",
+        "jade": "*",
+        "async": "*",
+        "octonode" : "*"
+    },
+    "devDependencies": {
+        "coffee-script": "1.4.0",
+        "nodemon": "*"
+    },
+    "scripts": {
+        "start": "nodemon"
+    },
+    "engines": {
+        "node": "*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Nolski/Octofolio"
+    },
+    "bugs": {
+        "url": "https://github.com/Nolski/Octofolio/issues"
+    },
+    "author": {
+        "name": "Mike and Dylan",
+        "email": ""
+    },
+    "license": "GNU GENERAL PUBLIC LICENSE"
+}
