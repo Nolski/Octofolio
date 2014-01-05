@@ -1,2 +1,1 @@
-
-console.log("FIRST THINGY")
+console.log "FIRST THINGY"
