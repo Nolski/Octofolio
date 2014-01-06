@@ -6,7 +6,6 @@ http = require 'http'
 
 app = express()
 
-
 client = github.client()
 ghme   = client.me();
 ghuser = client.user(config.user);
@@ -39,8 +38,13 @@ http.createServer(app).listen(app.get('port'), ()->
 app.get("/dylansoctofolio", (req, res)->
 
   repos[0].info(
+
     (err, status, body, headers)->
       res.json body
   );
 
+)
+
+app.get('/manage', (req, res) ->
+	res.render('manage')
 )
