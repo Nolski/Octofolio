@@ -1,11 +1,14 @@
 extends layout
 
 block content
-    div.small-9.columns.repos
+    div.small-12.columns.repos
         table
+            thead
+                th
+                    h3 Your Repositories
             each repo in repos
-                tr
+                tr.repo
                     td
-                        h1 #{repo.name}
+                        h3 #{repo.name}
                         p #{repo.description}
 

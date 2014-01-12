@@ -25,6 +25,55 @@ body {
     height: 100%;
     overflow: scroll;
 }
+
 .login label {
     text-align: left;
+}
+
+.header {
+    background-color: #333333;
+    height: 2.5rem;
+    width: 100%;
+    color: #FFF;
+    padding-left: 10px;
+}
+
+th > h3 {
+    font-weight: 600;
+}
+
+.repo:hover {
+    background-color: #ECFFF6;
+    cursor: pointer;
+}
+
+.title {
+    font-weight: 400 !important;
+    text-align: left;
+}
+
+.off-canvas-wrap, .inner-wrap, .left-off-canvas-menu {
+    height: 100%;
+}
+
+.settings {
+    list-style: none;
+    color: #FFF;
+    margin: 20px;
+}
+
+.settings > li {
+    text-align: center;
+    border-bottom: #BBB 1px solid;
+    padding: 10px 0;
+    font-weight: 300;
+}
+
+.settings > li:last-of-type {
+    border-bottom: none;
+}
+
+.side-title {
+    font-size: 1.7rem;
+    font-weight: 400;
 }

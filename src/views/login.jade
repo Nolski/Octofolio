@@ -2,14 +2,14 @@ extends layout
 
 block content
   div.small-9.main.columns
-      div.login-form
-          h3.title Login:
-              form(method="POST" action="#" class="login")
-                  div.small-6.small-offset-3
-                      div
-                          label Username:
-                          input(type="text" name="username" placeholder="Enter your username")
-                      div
-                          label Password:
-                          input(type="password" name="password" placeholder="Enter your password")
-                      input(type="submit" value="Go" class="button tiny right")
+    div.login-form
+      div.small-6.small-offset-5
+         h3.title Login:
+          form(method="POST" action="#" class="login")
+             div
+               label Username:
+               input(type="text" name="username" placeholder="Enter your username")
+             div
+               label Password:
+               input(type="password" name="password" placeholder="Enter your password")
+              input(type="submit" value="Go" class="button tiny right")

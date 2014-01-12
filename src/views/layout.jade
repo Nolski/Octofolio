@@ -5,5 +5,26 @@ html
         link(rel="stylesheet", href="/css/main.css")
         title Management page
     body
-        div.small-3.rail.columns
-        block content
+        a(href="https://github.com/nolski/octofolio")
+            img(style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px; z-index: 200;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-red@2x.png" alt="Fork me on GitHub")
+        div.off-canvas-wrap
+            div.inner-wrap
+                nav.tab-bar
+                    section.left-small
+                        a.left-off-canvas-toggle.menu-icon
+                            span
+                    section.middle.tab-bar-section
+                        h3.title Octofolio
+                aside.left-off-canvas-menu
+                    ul.settings
+                        li.side-title Settings
+                        li stuff
+                        li stuff
+                        li stuff
+                block content
+                a.exit-off-canvas
+    script(src="/js/modernizr.js")
+    script(src="/js/jquery.js")
+    script(src="/js/fastclick.js")
+    script(src="/js/foundation.min.js")
+    script(src="/js/script.js")
