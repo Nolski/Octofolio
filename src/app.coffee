@@ -9,8 +9,7 @@ app = express()
 client = github.client()
 ghme   = client.me();
 ghuser = client.user(config.user);
-
-
+repos = []
 
 app.configure(()->
   app.set('port', process.env.PORT || 3000);
@@ -24,15 +23,9 @@ app.configure(()->
   app.use(express.static(path.join(__dirname, 'public')));
 );
 
-
-
-repos = (client.repo("#{config.user}/#{repo}") for repo in config.repos)
-
 http.createServer(app).listen(app.get('port'), ()->
   console.log("Express server listening on port " + app.get('port'));
 )
-#ghissue : client.issue("#{config.user}/#{repo}")
-#ghpr : client.pr("#{config.user}/#{repo}")
 
 app.get("/dylansoctofolio", (req, res)->
 
@@ -44,8 +37,12 @@ app.get("/dylansoctofolio", (req, res)->
 
 )
 
-app.get('/manage', (req, res) ->
+app.get('/login', (req, res) ->
     res.render('login')
+)
+
+app.get('/manage', (req, res) ->
+    res.render('manage', repos: repos)
 )
 
 app.post('/manage', (req, res) ->

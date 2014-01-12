@@ -38,6 +38,10 @@ body {
     padding-left: 10px;
 }
 
+table {
+    margin: 1.5rem;
+}
+
 th > h3 {
     font-weight: 600;
 }
