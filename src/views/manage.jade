@@ -1,9 +1,11 @@
 extends layout
 
 block content
-    div.small-3.rail.columns.
-    div.small-9.main.columns
-        ul
+    div.small-9.columns.repos
+        table
             each repo in repos
-                li #{repo.name}
+                tr
+                    td
+                        h1 #{repo.name}
+                        p #{repo.description}
 

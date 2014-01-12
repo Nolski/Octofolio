@@ -1,7 +1,7 @@
 express = require "express"
 github = require 'octonode'
 config = require '../config'
-path = require('path');
+path = require 'path'
 http = require 'http'
 
 app = express()
@@ -45,5 +45,21 @@ app.get("/dylansoctofolio", (req, res)->
 )
 
 app.get('/manage', (req, res) ->
-	res.render('manage')
+    res.render('login')
+)
+
+app.post('/manage', (req, res) ->
+    username= req.body.username
+    password = req.body.password
+
+    client = github.client({
+        username: username,
+        password: password
+    })
+
+    client.get('/user/repos', {}, (err, status, body, headers) ->
+        repos = (repo for repo in body when repo.private == false)
+        console.log repos[0]
+        res.render('manage', repos: repos)
+    )
 )
