@@ -73,6 +73,10 @@ th > h3 {
     font-weight: 300;
 }
 
+.settings a {
+    color: #FFF !important;
+}
+
 .settings > li:last-of-type {
     border-bottom: none;
 }
