@@ -7,6 +7,8 @@ mongo = require 'mongoskin'
 octoDB = {}
 
 app = express()
+app.admin = require('./models/admin')
+db = require('./initMongo')(app, config)
 
 client = github.client()
 ghme   = client.me();
@@ -23,6 +25,8 @@ app.configure(()->
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  require('./routes/manage')(app, github)
+  require('./routes/Octofolio')(app, github)
 );
 
 #Connect to database

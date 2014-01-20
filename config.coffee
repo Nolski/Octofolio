@@ -1,3 +1,3 @@
 module.exports =
-  user : "dxa4481"
-  repos : ['Octofolio']
+  username : "admin"
+  password : "password"

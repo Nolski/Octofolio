@@ -8,7 +8,9 @@
         "jade": "*",
         "async": "*",
         "octonode" : "*",
-        "mongoskin": "*"
+        "stylus" : "*",
+        "mongoose" : "*",
+        "bcrypt-nodejs" : "*"
     },
     "devDependencies": {
         "coffee-script": "1.4.0",
