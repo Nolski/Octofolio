@@ -5,10 +5,9 @@ path = require 'path'
 http = require 'http'
 
 app = express()
+app.admin = require('./models/admin')
+db = require('./initMongo')(app, config)
 
-client = github.client()
-ghme   = client.me();
-ghuser = client.user(config.user);
 
 
 
@@ -22,11 +21,10 @@ app.configure(()->
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
+  require('./routes/manage')(app, github)
+  require('./routes/Octofolio')(app, github)
 );
 
-
-
-repos = (client.repo("#{config.user}/#{repo}") for repo in config.repos)
 
 http.createServer(app).listen(app.get('port'), ()->
   console.log("Express server listening on port " + app.get('port'));
@@ -35,24 +33,4 @@ http.createServer(app).listen(app.get('port'), ()->
 #ghpr : client.pr("#{config.user}/#{repo}")
 
 
-app.get('/manage', (req, res) ->
-    res.render('login')
-)
 
-app.post('/manage', (req, res) ->
-    username= req.body.username
-    password = req.body.password
-
-    client = github.client({
-        username: username,
-        password: password
-    })
-
-
-    client.get('/user/repos', {}, (err, status, body, headers) ->
-        res.send err.statusCode, err.headers.status if err
-        repos = (repo for repo in body when repo.private == false)
-        console.log repos[0]
-        res.render('manage', repos: repos)
-    )
-)
