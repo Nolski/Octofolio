@@ -1,16 +1,19 @@
 mongoose = require("mongoose")
+Admin = require './models/admin'
 
 init = (app, config) ->
   db = mongoose.connection
   db.on "error", console.error.bind(console, "Mongo connection error:")
   db.once "open", callback = ->
     console.log "Mongo DB connected!"
-    configAdmin = new app.admin(
-      username : config.username
+    configAdmin = new Admin(
+      username : "admin"
       password : config.password)
-    configAdmin.save()
+    Admin.remove {}, () ->
+      configAdmin.save()
 
   mongoose.connect "mongodb://localhost:27017/Octofolio"
   db
 
 module.exports = init
+
