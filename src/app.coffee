@@ -34,15 +34,6 @@ http.createServer(app).listen(app.get('port'), ()->
 #ghissue : client.issue("#{config.user}/#{repo}")
 #ghpr : client.pr("#{config.user}/#{repo}")
 
-app.get("/dylansoctofolio", (req, res)->
-
-  repos[0].info(
-
-    (err, status, body, headers)->
-      res.json body
-  );
-
-)
 
 app.get('/manage', (req, res) ->
     res.render('login')
@@ -57,7 +48,9 @@ app.post('/manage', (req, res) ->
         password: password
     })
 
+
     client.get('/user/repos', {}, (err, status, body, headers) ->
+        res.send err.statusCode, err.headers.status if err
         repos = (repo for repo in body when repo.private == false)
         console.log repos[0]
         res.render('manage', repos: repos)
