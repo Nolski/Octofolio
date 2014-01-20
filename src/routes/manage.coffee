@@ -1,10 +1,14 @@
+Admin = require '../models/admin'
+
 module.exports = (app, github) ->
     app.get('/manage', (req, res) ->
+        console.log req.session
+        return res.redirect('/admin') unless req.session.logedIn
         res.render('login')
     )
 
     app.post('/manage', (req, res) ->
-        console.log req.body
+        return res.redirect('/admin') unless req.session.logedIn
         username= req.body.username
         password = req.body.password
 
@@ -32,5 +36,13 @@ module.exports = (app, github) ->
     # Handles local user login
     app.post('/admin', (req, res) ->
             #TODO: Handle local user login
-            authenticate('Admin', req.body.password)
+            Admin.findOne("admin", (err, adminUser) ->
+                adminUser.check_password(req.body.password, (err, pwCheck) ->
+                    return res.send 401 unless pwCheck
+                    req.session.logedIn = true
+                    res.redirect '/manage'
+                )
+            )
+#            req.session.
+#            authenticate('Admin', req.body.password)
     )
