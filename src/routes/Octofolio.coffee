@@ -3,5 +3,8 @@ module.exports = (app, github) ->
     return res.send 500, "Admin hasn't added git account" unless app.client
     res.render('manage', repos: app.repos)
   )
+  app.get('/', (req, res) ->
+    res.redirect '/Octofolio'
+  )
 
 

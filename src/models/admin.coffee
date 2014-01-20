@@ -15,7 +15,6 @@ schema.statics =
 schema.methods =
   check_password : (raw_passwd, cb) ->
     #CB takes err res
-    console.log this
     bcrypt.compare(raw_passwd, @password, cb)
 
 
