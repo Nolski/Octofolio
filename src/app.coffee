@@ -3,7 +3,7 @@ github = require 'octonode'
 config = require '../config'
 path = require 'path'
 http = require 'http'
-mongo = require 'mongodb'
+mongo = require 'mongoskin'
 octoDB = {}
 
 app = express()
@@ -26,9 +26,7 @@ app.configure(()->
 );
 
 #Connect to database
-mongo.connect('mongodb://127.0.0.1:27017/test', (error, db)->
-    octoDB = db.collection('Octofolio')
-)
+db = mongo.db('127.0.0.1:27017/Octofolio')
 
 #Create webserver
 http.createServer(app).listen(app.get('port'), ()->
@@ -46,6 +44,16 @@ app.get('/manage', (req, res) ->
     res.render('manage', repos: repos)
 )
 
+#Handles admin settings
+app.get('/admin', (req, res) ->
+    res.render('admin')
+)
+
+# Handles local user login
+app.post('/admin', (req, res) ->
+    #TODO: Handle local user login
+    authenticate('Admin', req.body.password)
+)
 # Handles github user login
 app.post('/manage', (req, res) ->
     username= req.body.username
@@ -64,5 +72,5 @@ app.post('/manage', (req, res) ->
 )
 
 authenticate = (username, password) ->
-    response = octoDB.auth(username, password)
-    console.log(response)
+    console.log("octoDB: ", octoDB)
+

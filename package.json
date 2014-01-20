@@ -8,7 +8,7 @@
         "jade": "*",
         "async": "*",
         "octonode" : "*",
-        "mongodb": "*"
+        "mongoskin": "*"
     },
     "devDependencies": {
         "coffee-script": "1.4.0",
